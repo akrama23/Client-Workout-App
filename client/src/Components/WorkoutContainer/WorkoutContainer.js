@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
-
+import { Component } from 'react';
+import WorkoutCard from './WorkoutCard'
 
 class WorkoutContainer extends Component {
     
-    state = {
-        workouts: []
-    }
+   
 
-    authorizedFetch = () => {
-        fetch()
-    }
+
 
     render(){
         return(
-            <div>
 
+            <div>
+              {this.props.workouts.map(workout => <WorkoutCard workout={workout} user={this.props.user} favWorkout={this.props.favWorkout} key={workout.id}/>)}
             </div>
         )
     }

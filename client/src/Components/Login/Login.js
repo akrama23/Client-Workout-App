@@ -48,16 +48,21 @@ class Login extends Component {
         fetch("http://localhost:3000/login", reqPack)
             .then((r) => r.json())
             .then((response) => {
+                console.log(response)
                 // The token below will be used as a header for Authorization in your fetches
                 // I packaged the token into our response from the login method in our backend
                 //and immediately save it locally (if you open your application tab in chrome devTools
                 //and look at your local storage and you should see it after a successful login!)
+                if (response.user){
+                this.props.setCurrentUser(response.user);
                 localStorage.token = response.jwt;
                 //The line below should also work, if you ever see this syntax
                 // localStorage.setItem("token", response.jwt)
                 //Below I use the prop function of setCurrentUser to pass up my user, setting my user state in App
                 //and a loggedIn state of true on successful login
-                this.props.setCurrentUser(response.user);
+            }else{
+                console.log(response.message)
+            }
             })
 
     }
@@ -68,20 +73,27 @@ class Login extends Component {
           <div>
               <form onSubmit={this.login}>
                    <br/>
+                   <label>
+                       Email:
+                       <br/>
                    <input 
                         type="text"
                         name="email"
                         placeholder="Email"
                         onChange={this.handleChange}
                   />
+                  </label>
                     <br/>
-                
+                    <label>
+                        Password:
+                        <br/>
                     <input
                         type="password"
                         name="password"
                         placeholder="Password"
                         onChange={this.handleChange}
                     />
+                    </label>
                     <br/>
                     <br/>
                 <button type="submit">Submit</button>

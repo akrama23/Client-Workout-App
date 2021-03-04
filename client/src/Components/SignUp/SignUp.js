@@ -66,51 +66,67 @@ class SignUp extends Component {
     render() {
         return(
             <div>
-                {this.state.create ? (
+                {this.state.created ? (
                     <Redirect to="/login" />
                 ) : (
                     <div>
                         <div className="please-log-in"><p>{this.state.errorMessage}</p></div>
                         <br/>
                         <form onSubmit={this.createUser}>
-                            <input
-                            type="text"
-                            name="first_name"
-                            placeholder="First Name"
-                            onChange={this.handleChange}
-                            />
+                            <label>
+                                First Name: 
+                                <br/>
+                                <input
+                                type="text"
+                                name="first_name"
+                                placeholder="First Name"
+                                onChange={this.handleChange}
+                                />
+                            </label>
                             <br/>
-
-                            <input
-                            type="text"
-                            name="last_Name"
-                            placeholder="Last Name"
-                            onChange={(e) => this.handleChange(e)}
-                            />
+                            <label>
+                                Last Name:
+                                <br/>
+                                <input
+                                type="text"
+                                name="last_name"
+                                placeholder="Last Name"
+                                onChange={this.handleChange}
+                                />
+                            </label>
                             <br/>
-
-                            <input
-                            type="text"
-                            name="image"
-                            placeholder="Paste Image URL.."
-                            onChange={(e) => this.handleChange(e)}
-                            />
+                            <label>
+                                Image:
+                                <br/> 
+                                <input
+                                type="text"
+                                name="image"
+                                placeholder="Paste Image URL.."
+                                onChange={this.handleChange}
+                                />
+                            </label>
                             <br/>
-
-                            <input
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            onChange={(e) => this.handleChange(e)}
-                            />
+                            <label>
+                                Email:
+                                <br/>
+                                <input
+                                type="text"
+                                name="email"
+                                placeholder="Email"
+                                onChange={this.handleChange}
+                                />
+                            </label>
                             <br/>
-
-                            <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            onChange={(e) => this.handleChange(e)} 
-                            />
+                            <label>
+                                Password:
+                                <br/>
+                                <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                onChange={this.handleChange} 
+                                />
+                            </label>
                             <br/>
                             <br/>
                             

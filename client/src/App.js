@@ -4,6 +4,7 @@ import SignUp from './Components/SignUp/SignUp';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 import MainContainer from './Components/MainContainer/MainContainer'
+import FavoriteContainer from './Components/FavoriteContainer/FavoriteContainer'
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 
 
@@ -13,6 +14,7 @@ class App extends Component {
 
     state = {
       user: {},
+      userWorkouts: [],
       loggedIn: false
     };
 
@@ -22,6 +24,7 @@ class App extends Component {
     setCurrentUser = (user) => {
       this.setState({
         user: user,
+        userWorkouts: user.workouts,
         loggedIn: true
       });
     };
@@ -80,6 +83,12 @@ class App extends Component {
         .then((user) => this.setCurrentUser(user));
     }
 
+    favWorkout = (workout) => {
+      this.setState({
+          userWorkouts: [...this.state.userWorkouts, workout]
+      })
+  }
+
 
   render(){
     return (
@@ -102,11 +111,11 @@ class App extends Component {
               </span>
             ) : null }
             <br/>
+              
 
             <Link className="link" to="/"> Home</Link>
             <br/>
-
-            <Link className="link" to="/auth">
+            <Link className="link" to="/main">
               Auth Check{" "}
               {!this.state.loggedIn ? "(works better if you're Logged In!)" : "(Try it now, you're logged in!)"}
             </Link>{" "}
@@ -132,8 +141,14 @@ class App extends Component {
               </Route>
 
               <Route exact path="/main">
-                <MainContainer loggedIn={this.state.loggedIn} />
+                <MainContainer favWorkout={this.favWorkout} user={this.state.user} loggedIn={this.state.loggedIn} />
               </Route>
+
+              <Route exact path="/favorites">
+                <FavoriteContainer user={this.state.user} userWorkouts={this.state.userWorkout} loggedIn={this.state.loggedIn} />
+              </Route>
+              
+
             </Switch>
 
 
