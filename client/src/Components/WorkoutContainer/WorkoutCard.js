@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import ReactPlayer from 'react-player'
-import FavoriteForm from '../FavoriteContainer/FavoriteForm'
+// import FavoriteForm from '../FavoriteContainer/FavoriteForm'
 
 class WorkoutCard extends Component {
 
@@ -19,6 +19,32 @@ class WorkoutCard extends Component {
         this.setState({
             showVideo: !this.state.showVideo
         })
+    }
+
+    favoriteHandler = (e) => {
+        e.preventDefault()
+        
+        let favWorkout = {
+            user_id: this.props.user.id,
+            workout_id: this.props.workout.id
+        }
+        
+        let reqPack = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(favWorkout)
+
+         }
+
+         fetch("http://localhost:3000/favorites", reqPack)
+            .then(res => res.json())
+            .then(favWorkout => {
+                this.props.favWorkout(favWorkout)
+            })
     }
     
     render(){
@@ -50,7 +76,8 @@ class WorkoutCard extends Component {
                 </div>
                 ==============
                 <div>
-                    <FavoriteForm user={this.props.user} workout={this.props.workout} favWorkout={this.props.favWorkout}/>
+                <button onClick={this.favoriteHandler}>Add To Favorite</button>
+                    {/* <FavoriteForm user={this.props.user} workout={this.props.workout} favWorkout={this.props.favWorkout}/> */}
                 </div>
 
             </div>

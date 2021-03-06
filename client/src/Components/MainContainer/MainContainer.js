@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import WorkoutContainer from '../WorkoutContainer/WorkoutContainer'
-
+import WorkoutForm from '../WorkoutContainer/WorkoutForm'
 
 class MainContainer extends Component{
 
@@ -28,9 +28,12 @@ class MainContainer extends Component{
     render(){
         return(
             <div>
-            
+                <div>
                 <WorkoutContainer user={this.props.user} favWorkout={this.props.favWorkout} workouts={this.state.workouts}/>
-                
+                </div>
+                <div>
+                    <WorkoutForm/>
+                </div>
             </div>
         )
     }

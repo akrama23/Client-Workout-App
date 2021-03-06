@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 
-export class WorkoutForm extends Component {
+export class EditForm extends Component {
     render() {
         return (
             <div>
                 <form>
                     <label>
-                        Workout Name:
+                        First Name:
                         <br/>
-                    <input type="text" name="name" placeholder="Workout Name..."/>
+                    <input type="text" name="first_name" placeholder="First Name..."/>
                     </label>
                         <br/>
                     <label>
-                       Description:
+                       Last Name:
                         <br/>
                     <input type="text" name="last_name" placeholder="Last Name..."/>
                     </label>
@@ -20,22 +20,24 @@ export class WorkoutForm extends Component {
                     <label>
                         Image:
                         <br/>
-                    <input type="text" name="image" placeholder="Image URl..."/>
+                    <input type="text" name="image" placeholder="Image..."/>
                     </label>
                         <br/>
                     <label>
-                        Video:
+                        Email:
                         <br/>
-                    <input type="text" name="video" placeholder="Youtube Video..."/>
+                    <input type="text" name="email" placeholder="Email..."/>
                     </label>
                         <br/>
-                    <input type="submit" value="Create" />
+                    <input type="submit" value="Edit" />
                         <br/>
 
                 </form>
+                <br/>
+                <br/>
             </div>
         )
     }
 }
 
-export default WorkoutForm;
+export default EditForm

@@ -6,7 +6,8 @@ class Login extends Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        errorMessage: ""
     };
 
     //This is just our controlled form handleChange event listener used to take in our login form
@@ -48,7 +49,7 @@ class Login extends Component {
         fetch("http://localhost:3000/login", reqPack)
             .then((r) => r.json())
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 // The token below will be used as a header for Authorization in your fetches
                 // I packaged the token into our response from the login method in our backend
                 //and immediately save it locally (if you open your application tab in chrome devTools
@@ -61,7 +62,7 @@ class Login extends Component {
                 //Below I use the prop function of setCurrentUser to pass up my user, setting my user state in App
                 //and a loggedIn state of true on successful login
             }else{
-                console.log(response.message)
+                this.setState({errorMessage: response.message})
             }
             })
 
@@ -69,8 +70,8 @@ class Login extends Component {
 
     render(){
         return(
-          
-          <div>
+            <div>
+              <p>{this.state.errorMessage}</p>
               <form onSubmit={this.login}>
                    <br/>
                    <label>
