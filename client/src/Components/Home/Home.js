@@ -3,15 +3,9 @@ import React, { Component } from "react";
 class Home extends Component {
     render(){
         return(
-            <div className="home-paragraph">
-        {/* Completely unneccessary welcome img, but why not make this at least a little fun */}
-            
-                {/* <img className = "home-pic" src="https://c.tenor.com/XK15GIbeZEEAAAAC/mark-wahlberg-where-do-i-go.gif"/> */}
-                    <br/>
-
-                    <p>Try to go to the Auth Check link above and try to do a fetch.</p>
-                    <p>The route on the backend is authenticated, <br/>meaning you need a token to get access!</p>
-                    <p>After you log in and get it to work, <br/> feel free to pick apart this code to see how!</p>
+            <div className="home-div">
+                    <p>Welcome to the WEIGHTROOM</p>
+                    <img src="https://img.huffingtonpost.com/asset/5b9e7bbd2600003500804c23.jpeg?ops=scalefit_720_noupscale" />
             </div>
         ); 
     }

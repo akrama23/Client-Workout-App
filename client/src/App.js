@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import MainContainer from './Components/MainContainer/MainContainer'
 import FavoriteContainer from './Components/FavoriteContainer/FavoriteContainer'
 import Profile from './Components/Profile/Profile'
+import Footer from './Components/Footer/Footer'
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 
 
@@ -43,8 +44,7 @@ class App extends Component {
       }else {
         return (
           <div className="Please-log-in">
-            <h2>Sorry, But we don't know you...</h2>
-            <h3>Please log in below!</h3>
+            <h4>Please log in below</h4>
           </div>
         );
       }
@@ -74,6 +74,9 @@ class App extends Component {
         .then((user) => this.setCurrentUser(user));
     }
 
+
+
+
     favWorkout = (workout) => {
       this.setState({
           userWorkouts: [workout,...this.state.userWorkouts]
@@ -83,21 +86,45 @@ class App extends Component {
   completeWorkout = (completeWorkout) => {
     // console.log(completeWorkout)
     this.setState({
-      userWorkouts: this.state.userWorkouts.filter((workout) => workout != completeWorkout)
+      userWorkouts: this.state.userWorkouts.filter((workout) => workout !== completeWorkout)
     })
   }
 
+  handleEditForm = (e) => {
+    e.preventDefault();
+    let userInfo = {
+        first_name: e.target.first_name.value,
+        last_name: e.target.last_name.value,
+        image: e.target.image.value
+    }
+
+    let reqPack = {
+        method: "PATCH",
+        headers: {"Authorization": `Bearer ${localStorage.token}`,
+        "Content-Type": "application/json"},
+        body: JSON.stringify(userInfo)
+    }
+
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, reqPack)
+        .then(r => r.json())
+        .then(newUserInfo => {
+          this.setState({...this.state, user: newUserInfo})
+        })
+}
+
   render(){
     return (
-      <div className="main-div">
+
+      <div className="main-div-container">
+        <div className="content-wrap">
         {this.displayGreeting()}
         <BrowserRouter>
-
+        
          <Link className="link" to="/login"> Login </Link>
 
-         <span className="link">----||||----</span>
-
-         <Link className="link" to="/signup"> SignUp </Link>
+         <span>----||||----</span>
+          <Link className="link" to="/signup"> SignUp </Link>
+         
          <br/>
       
             {this.state.loggedIn ? (
@@ -119,10 +146,9 @@ class App extends Component {
 
             <Link className="link" to="/"> Home</Link>
             <br/>
-            <Link className="link" to="/main">
-              Auth Check{" "}
-              {!this.state.loggedIn ? "(works better if you're Logged In!)" : "(Try it now, you're logged in!)"}
-            </Link>{" "}
+            {this.state.loggedIn ? (<Link className="link" to="/workouts">Workouts</Link>
+            ) : null}
+            
             <br/>
 
             <Switch>
@@ -138,27 +164,25 @@ class App extends Component {
                 )}
               </Route>
               <Route exact path="/profile">
-                <Profile user={this.state.user} setCurrentUser={this.setCurrentUser}/>
+                <Profile updatedUser={this.updatedUser} handleEditForm={this.handleEditForm} user={this.state.user} setCurrentUser={this.setCurrentUser}/>
               </Route>
 
               <Route exact path="/signup">
                 {this.state.loggedIn ? <Redirect to="/" /> : <SignUp/>}
               </Route>
 
-              <Route exact path="/main">
+              <Route exact path="/workouts">
                 <MainContainer favWorkout={this.favWorkout} user={this.state.user} loggedIn={this.state.loggedIn} />
               </Route>
 
               <Route exact path="/favorites">
                 <FavoriteContainer user={this.state.user} userWorkouts={this.state.userWorkouts} completeWorkout={this.completeWorkout} loggedIn={this.state.loggedIn} />
               </Route>
-              
-
             </Switch>
+          </BrowserRouter>
+          </div>
 
-
-        </BrowserRouter>
-       
+          <Footer/>
       </div>
     );
   }

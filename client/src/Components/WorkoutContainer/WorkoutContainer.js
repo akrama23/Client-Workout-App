@@ -10,7 +10,7 @@ class WorkoutContainer extends Component {
     render(){
         return(
 
-            <div>
+            <div className="container">
               {this.props.workouts.map(workout => <WorkoutCard workout={workout} user={this.props.user} favWorkout={this.props.favWorkout} key={workout.id}/>)}
             </div>
         )

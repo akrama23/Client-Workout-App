@@ -54,30 +54,23 @@ class FavoriteCard extends Component{
         let {name, description, image, video} = this.props.workout
         
         return(
-            <div>
-                <div>
+            <div className="card">
+                <div className="face face1">
+                    <div className="content">
+                        <img src={image} alt={this.props.workout.name} width="250" height="200"/>
                         <h4>{name}</h4>
-                </div>
-                <div>
-                    <img src={image} alt={this.props.workout.name} width="250" height="200"/>
+                    </div>
                 </div>
 
-                <div>
-                    <p>{description}</p>
-                </div>
-                ==============
-                <div>          
-                    {this.state.showMuscles && this.props.workout.muscles.map(muscle => <p key={muscle.id}>{muscle.name}</p> )}
-                    <button onClick={this.toggleMuscles}>Targeted Muscle?</button>
-                </div>
-                ==============      
-                    {/* {console.log(this.props.workout.muscles)} */}
-                <div>
-                    {this.state.showVideo && <ReactPlayer url={video} width='25%'  controls/>}
-                    <button onClick={this.toggleVideo}>Watch How-To</button>
-                </div>
-                <div>
-                    <button onClick={() => this.favoriteHandler()}>Complete</button>
+                <div className="face face2">  
+                    <div className="content">       
+                        <p>{description}</p>
+                        {this.state.showMuscles && this.props.workout.muscles.map(muscle => <p key={muscle.id}>{muscle.name}</p> )}
+                        <button onClick={this.toggleMuscles}>Targeted Muscle?</button>
+                        {this.state.showVideo && <ReactPlayer url={video} width='85%' height="75%"  controls/>}
+                        <button onClick={this.toggleVideo}>Watch How-To</button>
+                        <button onClick={() => this.favoriteHandler()}>Complete</button>
+                    </div>
                 </div>
                     
             </div>

@@ -1,12 +1,16 @@
 import { Component } from 'react';
 import ReactPlayer from 'react-player'
+import { Redirect } from "react-router-dom";
+import ReactDOM from 'react-dom'
+import ModalVideo from 'react-modal-video'
 // import FavoriteForm from '../FavoriteContainer/FavoriteForm'
 
 class WorkoutCard extends Component {
-
+    
     state = {
         showMuscles: false,
-        showVideo: false
+        showVideo: false,
+        isOpen: false
     }
 
     toggleMuscles= () => {
@@ -23,7 +27,7 @@ class WorkoutCard extends Component {
 
     favoriteHandler = (e) => {
         e.preventDefault()
-        
+
         let favWorkout = {
             user_id: this.props.user.id,
             workout_id: this.props.workout.id
@@ -52,34 +56,24 @@ class WorkoutCard extends Component {
         let { name, description, image, video } = this.props.workout
 
         return(
-            <div>
-                <div>
-                    <h4>{name}</h4>
+            <div className="card">
+                <div className="face face1">
+                    <div className="content">
+                        <img src={image} alt={this.props.workout.name} width="250" height="200"/>
+                        <h4>{name}</h4>
+                    </div>
                 </div>
-                
-                <div>
-                    <img src={image} alt={this.props.workout.name} width="250" height="200"/>
-                </div>
-
-                <div>
-                    <p>{description}</p>
-                </div>
-                ==============
-                <div>          
-                    {this.state.showMuscles && this.props.workout.muscles.map(muscle => <p key={muscle.id}>{muscle.name}</p> )}
-                    <button onClick={this.toggleMuscles}>Targeted Muscle?</button>
-                </div>
-                ==============      
-                <div>
-                    {this.state.showVideo && <ReactPlayer url={video} width='25%'  controls/>}
-                    <button onClick={this.toggleVideo}>Watch How-To</button>
-                </div>
-                ==============
-                <div>
-                <button onClick={this.favoriteHandler}>Add To Favorite</button>
-                    {/* <FavoriteForm user={this.props.user} workout={this.props.workout} favWorkout={this.props.favWorkout}/> */}
-                </div>
-
+         
+                <div className="face face2">
+                    <div className="content">
+                        <p>{description}</p>
+                        {this.state.showMuscles && this.props.workout.target_muscles.map(target_muscle => <ul key={target_muscle.id}><li>{target_muscle.muscle.name}</li></ul> )}
+                        <button onClick={this.toggleMuscles}>Targeted Muscle?</button>
+                        {this.state.showVideo && <ReactPlayer url={video} width='75%' height="75%" controls/>}
+                        <button onClick={this.toggleVideo}>Watch How-To</button>
+                        <button onClick={this.favoriteHandler} >Add To Favorite</button>
+                    </div>
+                 </div>
             </div>
             )
     }

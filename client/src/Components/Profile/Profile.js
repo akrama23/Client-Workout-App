@@ -2,6 +2,17 @@ import React, { Component } from 'react'
 import EditForm from './EditForm'
 
 export class Profile extends Component {
+
+    state = {
+        editForm: false 
+    }
+
+    toggleEditForm= () => {
+        this.setState({
+            editForm: !this.state.editForm
+            
+        })
+    }
     render() {
         return (
             <div>
@@ -18,7 +29,8 @@ export class Profile extends Component {
                     <strong>Email:</strong> {this.props.user.email}
                 </div>
                 <div>
-                    <EditForm/>
+                    {this.state.editForm && <EditForm user={this.props.user} handleEditForm={this.props.handleEditForm} setCurrentUser={this.props.setCurrentUser} updatedUser={this.props.updatedUser}/>}
+                    <button onClick={this.toggleEditForm}>Edit Profile Information</button>
                 </div>
             </div>
         )

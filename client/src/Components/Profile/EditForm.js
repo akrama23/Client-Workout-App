@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
-export class EditForm extends Component {
+class EditForm extends Component {
+
+    
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.props.handleEditForm}>
                     <label>
                         First Name:
                         <br/>
@@ -21,12 +24,6 @@ export class EditForm extends Component {
                         Image:
                         <br/>
                     <input type="text" name="image" placeholder="Image..."/>
-                    </label>
-                        <br/>
-                    <label>
-                        Email:
-                        <br/>
-                    <input type="text" name="email" placeholder="Email..."/>
                     </label>
                         <br/>
                     <input type="submit" value="Edit" />
