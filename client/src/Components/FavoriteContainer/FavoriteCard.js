@@ -58,7 +58,7 @@ class FavoriteCard extends Component{
                 <div className="face face1">
                     <div className="content">
                         <img src={image} alt={this.props.workout.name} width="250" height="200"/>
-                        <h4>{name}</h4>
+                        <h4>{name} </h4>
                     </div>
                 </div>
 
