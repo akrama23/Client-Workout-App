@@ -63,7 +63,7 @@ class App extends Component {
       const user = {token: token}
       let reqPack = {
         method: "POST",
-        header: { 
+        header: { Authorization: `Bearer ${localStorage.token}`,
           Accept: "application/json", 
           "Content-type": "application/json"
         },
