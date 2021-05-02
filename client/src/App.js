@@ -58,7 +58,7 @@ class App extends Component {
         console.log("No token found, try logging in!")
       }
     };
-
+    // Add new token
     tokenLogin = (token) => {
       const user = {token: token}
       let reqPack = {
@@ -76,7 +76,7 @@ class App extends Component {
 
 
 
-
+// create new function inside class
     favWorkout = (workout) => {
       this.setState({
           userWorkouts: [workout,...this.state.userWorkouts]
