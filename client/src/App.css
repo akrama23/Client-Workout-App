@@ -127,7 +127,7 @@ body:before{
     padding: 0;
 }
 
-.container .card .face.face2 .content button{
+/* .container .card .face.face2 .content button{
     margin: 15px 0 0;
     display: inline-block;
     text-decoration: none;
@@ -141,7 +141,7 @@ body:before{
 .container .card .face.face2 .content button:hover{
     background: #333;
     color: #fff;
-}
+} */
 
 /* .main-div-container{
     display: flex;
