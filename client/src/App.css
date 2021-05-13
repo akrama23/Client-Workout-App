@@ -118,14 +118,14 @@ body:before{
 
 }
 
-.container .card:hover .face.face2{
+/* .container .card:hover .face.face2{
     transform: translateY(0);
 }
 
 .container .card .face.face2 .content p{
     margin: 0;
     padding: 0;
-}
+} */
 
 /* .container .card .face.face2 .content button{
     margin: 15px 0 0;
