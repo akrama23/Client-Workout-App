@@ -21,7 +21,7 @@ Front-end for the Workout App
 ● Implemented the user interface with fully CSS styling
 
 
-#How to Clone Front-End for deployment on local machine :)
+# How to Clone Front-End for deployment on local machine :)
 
 1.clone down and cd into app on local machine
 
