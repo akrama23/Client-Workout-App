@@ -1,10 +1,12 @@
 # Front-end Client-Workout-App
 Front-end for the Workout App
 
-#First Download Back-End and run the server back-end server
-Clone down back-end here ---> https://github.com/akrama23/Workout-app
+#First Download Back-End and run the server. All steps on how to clone and deploy backend are available on the link below :)
+#Clone Ruby on Rails back-end here ---> https://github.com/akrama23/Workout-app
 
-#Welcome to the Wokeout App
+#Front end cloning process below introduction :)
+
+# Welcome to the Wokeout App
 -Learn to weightlift by accessing a series workouts. For each workout the user can see a list of targeted muscles or watch a how-to video on the specific workout. Users can also create new workouts to add to our database.
 
 ● Developed a Ruby on Rails API backend in order to create seeded data and React front-end to fetch data from the Rails backend.
