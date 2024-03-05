@@ -5,7 +5,7 @@ Front-end for the Workout App
 
 #Clone Ruby on Rails back-end here ---> https://github.com/akrama23/Workout-app
 
-#Front end cloning process below introduction :)
+#Front end cloning process below introduction
 
 # Welcome to the Wokeout App
 -Learn to weightlift by accessing a series workouts. For each workout the user can see a list of targeted muscles or watch a how-to video on the specific workout. Users can also create new workouts to add to our database.
@@ -21,13 +21,18 @@ Front-end for the Workout App
 ● Implemented the user interface with fully CSS styling
 
 
-#Install Front End
+#How to Clone Front-End for deployment on local machine :)
 
--clone down and cd into app on local machine
--cd into 'client' folder and run 'npm install'
--run 'npm start' to get started with the demo(but run backend server first)
+1.clone down and cd into app on local machine
 
-#currently working on 
--More design through css add flexbox and grid layout
--add like functionality 
--edit profile pages for users 
+2.cd into 'client' folder and run 'npm install'
+
+2.run 'npm start' to get started with the demo(but run backend server first)
+
+# Currently working on:
+
+-More design through css. Add flexbox and grid layout
+
+-Add a like button functionality to see which workouts are the most liked.
+
+-Edit profile pages for users for a more user-friendly UI
