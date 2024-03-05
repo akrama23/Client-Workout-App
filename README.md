@@ -23,11 +23,11 @@ Front-end for the Workout App
 
 # How to Clone Front-End for deployment on local machine :)
 
-1.clone down and cd into app on local machine
+1. Clone down and change directory into app on local machine by 'cd Client-Workout-App'
 
-2.cd into 'client' folder and run 'npm install'
+2. Change directory into 'client' folder by running 'cd client' and then run 'npm install'
 
-2.run 'npm start' to get started with the demo(but run backend server first)
+3. Run 'npm start' to get started with the demo
 
 # Currently working on:
 
